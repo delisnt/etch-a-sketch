@@ -1,5 +1,7 @@
+
+let container = document.querySelector('#container');
+const btn = document.querySelector('button')
 function genDivs(rows, columns) {
-    let container = document.querySelector('#container');
     for (let i = 0; i < rows * columns; i++){
         const cell = document.createElement('div');
         cell.style.cssText = 'border: 1px solid black; box-sizing: border-box;';
@@ -9,13 +11,23 @@ function genDivs(rows, columns) {
     const cellWidth = 100 / columns + '%';
     const cellHeight = 100 / rows + '%';
 
-    const cells = container.querySelectorAll ('.grid-cell');
+    const cells = container.querySelectorAll('.grid-cell');
     cells.forEach(cell => {
         cell.style.flex = `0 0 ${cellWidth}`;
         cell.style.height = cellHeight;
+        cell.addEventListener('mouseover', () => {
+            cell.style.backgroundColor = 'black';
+        })
+        btn.addEventListener('click', () =>{
+            cell.style.backgroundColor = 'white'
+        })
+
     });
 }
 
 
-   
+
+    
+
+
 genDivs(16,16);
