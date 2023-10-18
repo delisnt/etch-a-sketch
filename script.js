@@ -1,6 +1,7 @@
-
+let button = document.querySelector("#pick-size")
 let container = document.querySelector('#container');
-const btn = document.querySelector('button')
+const btn = document.querySelector('#cleargrid');
+button.addEventListener("click", pickGridSize);
 function genDivs(rows, columns) {
     for (let i = 0; i < rows * columns; i++){
         const cell = document.createElement('div');
@@ -19,15 +20,16 @@ function genDivs(rows, columns) {
             cell.style.backgroundColor = 'black';
         })
         btn.addEventListener('click', () =>{
-            cell.style.backgroundColor = 'white'
+            cell.style.backgroundColor = 'white';
         })
 
     });
 }
 
+    function pickGridSize() {
+        const gridValue = prompt("Pick a size for your grid!")
+        genDivs(gridValue,gridValue)
+    }
 
 
-    
 
-
-genDivs(16,16);
