@@ -23,7 +23,7 @@ sizeButton.addEventListener("click", function() {
 function genDivs(rows, columns) {
     for (let i = 0; i < rows * columns; i++){
         const cell = document.createElement('div');
-        cell.style.cssText = 'border: 1px solid black; box-sizing: border-box;';
+        cell.style.cssText = 'border: 1px thin black; box-sizing: border-box;';
         cell.classList.add('grid-cell');
         container.appendChild(cell);
     }
@@ -103,10 +103,10 @@ function genDivs(rows, columns) {
         }, 10);
 
         rgbButton.style.backgroundColor ='rgb('+r+','+g+','+b+')';
+        return;
     }
 
     rgbButton.addEventListener('mouseover', function() {
-        isMouseOver = true;
         if (hasRainbowRun) {
             return;
         } else {
@@ -115,3 +115,7 @@ function genDivs(rows, columns) {
         
     });
     
+    rgbButton.addEventListener('mouseout', function(){
+        if (hasRainbowRun)
+        rgbButton.style.backgroundColor = 'white'
+    })
