@@ -4,10 +4,23 @@ let rgbButton = document.querySelector('#rainbow');
 let sizeButton = document.querySelector("#pick-size");
 let container = document.querySelector('#container');
 const clearGridButton = document.querySelector('#cleargrid');
+let r = 0, b = 0, g = 0;
 let hasGridSizeRun = false;
-sizeButton.addEventListener("click", pickGridSize);
+let hasRainbowRun = false;
+let isMouseOver = false;
+
+
+
+sizeButton.addEventListener("click", function() {
+    if (hasGridSizeRun) {
+        alert("You already picked a grid size!");
+    } else {
+        pickGridSize();
+    }
+});
+
+
 function genDivs(rows, columns) {
-    hasGridSizeRun = true;
     for (let i = 0; i < rows * columns; i++){
         const cell = document.createElement('div');
         cell.style.cssText = 'border: 1px solid black; box-sizing: border-box;';
@@ -43,8 +56,10 @@ function genDivs(rows, columns) {
 }
 
     function pickGridSize() {
+        hasGridSizeRun = true;
         const gridValue = prompt("Pick a size for your grid!"); 
         genDivs(gridValue,gridValue);
+
     }
 
     function pickRandomRGBValue() {
@@ -55,4 +70,48 @@ function genDivs(rows, columns) {
        return RGBValue;
     }
 
-    pickRandomRGBValue()
+
+    function rainbowBackground() {
+        hasRainbowRun = true;
+        if (r <= 255 && g == 0 && b == 0) {
+            r ++;
+        }
+    
+        if (r == 255 && b == 0 && g <= 255) {
+            g ++;
+        }
+    
+        if (r == 255 && g == 255 && b <= 255) {
+            b ++;
+        }
+    
+        if (b == 255 && g == 255 && r > 0) {
+            r --;
+        }
+    
+        if (r == 0 && b == 255 && g > 0) {
+            g --;
+        }
+    
+        if (r == 0 && g == 0 && b > 0) {
+            b --;
+
+        }
+    
+        setTimeout(function() {
+            rainbowBackground();
+        }, 10);
+
+        rgbButton.style.backgroundColor ='rgb('+r+','+g+','+b+')';
+    }
+
+    rgbButton.addEventListener('mouseover', function() {
+        isMouseOver = true;
+        if (hasRainbowRun) {
+            return;
+        } else {
+            rainbowBackground();
+        }
+        
+    });
+    
