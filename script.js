@@ -8,6 +8,7 @@ let r = 0, b = 0, g = 0;
 let hasGridSizeRun = false;
 let hasRainbowRun = false;
 let isMouseOver = false;
+let isMouseOut = false;
 
 
 
@@ -98,12 +99,12 @@ function genDivs(rows, columns) {
 
         }
     
-        setTimeout(function() {
+        timeoutID = setTimeout(function() {
             rainbowBackground();
         }, 10);
 
         rgbButton.style.backgroundColor ='rgb('+r+','+g+','+b+')';
-        return;
+
     }
 
     rgbButton.addEventListener('mouseover', function() {
@@ -115,7 +116,46 @@ function genDivs(rows, columns) {
         
     });
     
-    rgbButton.addEventListener('mouseout', function(){
-        if (hasRainbowRun)
-        rgbButton.style.backgroundColor = 'white'
-    })
+    rgbButton.addEventListener('mouseout', function() {
+        isMouseOut = true;
+        hasRainbowRun = false;
+        clearTimeout(timeoutID);
+        rgbButton.style.backgroundColor = 'white';
+    });
+
+    function setButtonStyles(button, bgColor, textColor) {
+        button.style.backgroundColor = bgColor;
+        button.style.color = textColor;
+    }
+
+    blackButton.addEventListener('mouseover', function() {
+        setButtonStyles(blackButton, 'black', 'white');
+    });
+
+    blackButton.addEventListener('mouseout', function() {
+        setButtonStyles(blackButton, 'white', 'black');
+    });
+
+    eraserButton.addEventListener('mouseover', function(){
+        setButtonStyles(eraserButton, 'black', 'white')
+    });
+
+    eraserButton.addEventListener('mouseout', function() {
+        setButtonStyles(eraserButton, 'white', 'black');
+    });
+
+    clearGridButton.addEventListener('mouseover', function(){
+        setButtonStyles(clearGridButton, 'black', 'white')
+    });
+
+    clearGridButton.addEventListener('mouseout', function() {
+        setButtonStyles(clearGridButton, 'white', 'black');
+    });
+
+    sizeButton.addEventListener('mouseover', function(){
+        setButtonStyles(sizeButton, 'black', 'white')
+    });
+
+    sizeButton.addEventListener('mouseout', function() {
+        setButtonStyles(sizeButton, 'white', 'black');
+    });

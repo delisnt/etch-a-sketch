@@ -1,17 +1,31 @@
 
+#placement {
+    display: flex;
+    justify-content: space-evenly;
+    
+}
+
+ #buttons-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: stretch;
+    padding: 25px;
+ }
+
 #container {
     display: flex;
     flex-wrap: wrap;
     width: 500px;
     height: 500px;
     border: solid 2px black ;
-    margin: auto;
     margin-top: 50px;   
 }
 
 #buttons {
     display: flex;
     justify-content: center;
+    width: 100%;
     margin-top: 4px;
 }
 
@@ -22,13 +36,11 @@ h1 {
 }
 
 #pick-size, #cleargrid, #rainbow, #black, #eraser {
+    display: flex;
     font-weight: 900;
     font-family: monospace;
+    padding: 25%;
+    height: 100%;
     width: 100%;
-    height: 50px;
-}
-
-#black {
-    color: white;
-    background-color: black;
+    border: thin;
 }
