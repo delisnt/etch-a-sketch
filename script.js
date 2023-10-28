@@ -1,3 +1,4 @@
+
 let eraserButton = document.querySelector('#eraser');
 let blackButton = document.querySelector('#black');
 let rgbButton = document.querySelector('#rainbow');
@@ -9,7 +10,6 @@ let hasGridSizeRun = false;
 let hasRainbowRun = false;
 let isMouseOver = false;
 let isMouseOut = false;
-
 
 
 sizeButton.addEventListener("click", function() {
@@ -37,7 +37,7 @@ function genDivs(rows, columns) {
         cell.style.height = cellHeight;
         blackButton.addEventListener('click', () => {
             cell.addEventListener('mouseover', () =>{
-                cell.style.backgroundColor = 'black'
+            cell.style.backgroundColor = "black";
             })
         })
         clearGridButton.addEventListener('click', () =>{
@@ -58,7 +58,7 @@ function genDivs(rows, columns) {
 
     function pickGridSize() {
         hasGridSizeRun = true;
-        const gridValue = prompt("Pick a size for your grid!"); 
+        const gridValue = prompt("Pick a size for your grid!");
         genDivs(gridValue,gridValue);
 
     }
@@ -120,7 +120,7 @@ function genDivs(rows, columns) {
         isMouseOut = true;
         hasRainbowRun = false;
         clearTimeout(timeoutID);
-        rgbButton.style.backgroundColor = 'white';
+        rgbButton.style.backgroundColor = 'lightgrey';
     });
 
     function setButtonStyles(button, bgColor, textColor) {
@@ -129,33 +129,33 @@ function genDivs(rows, columns) {
     }
 
     blackButton.addEventListener('mouseover', function() {
-        setButtonStyles(blackButton, 'black', 'white');
+        setButtonStyles(blackButton, 'black', 'lightgrey');
     });
 
     blackButton.addEventListener('mouseout', function() {
-        setButtonStyles(blackButton, 'white', 'black');
+        setButtonStyles(blackButton, 'lightgrey', 'black');
     });
 
     eraserButton.addEventListener('mouseover', function(){
-        setButtonStyles(eraserButton, 'black', 'white')
+        setButtonStyles(eraserButton, 'black', 'lightgrey')
     });
 
     eraserButton.addEventListener('mouseout', function() {
-        setButtonStyles(eraserButton, 'white', 'black');
+        setButtonStyles(eraserButton, 'lightgrey', 'black');
     });
 
     clearGridButton.addEventListener('mouseover', function(){
-        setButtonStyles(clearGridButton, 'black', 'white')
+        setButtonStyles(clearGridButton, 'black', 'lightgrey')
     });
 
     clearGridButton.addEventListener('mouseout', function() {
-        setButtonStyles(clearGridButton, 'white', 'black');
+        setButtonStyles(clearGridButton, 'lightgrey', 'black');
     });
 
     sizeButton.addEventListener('mouseover', function(){
-        setButtonStyles(sizeButton, 'black', 'white')
+        setButtonStyles(sizeButton, 'black', 'lightgrey')
     });
 
     sizeButton.addEventListener('mouseout', function() {
-        setButtonStyles(sizeButton, 'white', 'black');
+        setButtonStyles(sizeButton, 'lightgrey', 'black');
     });
